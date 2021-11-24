@@ -14,11 +14,12 @@ By clicking on "Show application secret", `$clientSecret` can be copied
 ```php
 include_once("authenticate.php");
 
+$authServiceBaseUrl = 'https://pahbricator.test.com';
 $redirectUrl = getenv('baseUrl').'/test.php';
 $clientId = getenv('clientId');
 $clientSecret = getenv('clientSecret');
 $isLogout = !empty($_GET['logout']);
-$user = authenticate($clientId, $clientSecret, $redirectUrl, $isLogout);
+$user = authenticate($authServiceBaseUrl, $clientId, $clientSecret, $redirectUrl, $isLogout);
 
 if (!$user) {
     //  authentication configuration error
