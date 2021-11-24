@@ -10,15 +10,23 @@ php oauth login adaptor for any php applications
 By clicking on "Show application secret", `$clientSecret` can be copied
 
 
-// test.php
+### test.php
+```php
+include_once("authenticate.php");
 
-    include_once("authenticate.php");
+$redirectUrl = getenv('baseUrl').'/test.php';
+$clientId = getenv('clientId');
+$clientSecret = getenv('clientSecret');
+$isLogout = !empty($_GET['logout']);
+$user = authenticate($clientId, $clientSecret, $redirectUrl, $isLogout);
 
-    $redirectUrl = getenv('baseUrl').'/test.php';
-    $clientId = getenv('clientId');
-    $clientSecret = getenv('clientSecret');
-    $isLogout = !empty($_GET['logout']);
-    $user = authenticate($clientId, $clientSecret, $redirectUrl, $isLogout);
-
-
-
+if (!$user) {
+    //  authentication configuration error
+} else if ($user && isset($user->login_url)) {
+    // show login page with link to $user->login_url
+} else {
+    // login success with below data
+    $user->full_name;
+    $user->avatar_url;
+}
+```
