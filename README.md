@@ -5,7 +5,8 @@ php oauth login adaptor for any php applications
 ![image](https://user-images.githubusercontent.com/4509346/143195005-db8a899e-d551-46a8-a5e8-823715350828.png)
 
 
-Client PHID is the `$clientId`
+"Client PHID" is the `$clientId`
+
 By clicking on "Show application secret", `$clientSecret` can be copied
 
 
