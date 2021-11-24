@@ -1,9 +1,8 @@
 <?php
 session_start();
 use GuzzleHttp\Client as GuzzleClient;
-function authenticate($client_id, $client_secret, $redirect_url, $logout) {
+function authenticate($authservice_base_url, $client_id, $client_secret, $redirect_url, $logout) {
     if (!empty($client_id) && !empty($client_secret) && !empty($redirect_url)) {
-        $authservice_base_url = 'https://phabricator.localhost.com';
         $auth_redirect_url = "$authservice_base_url/oauthserver/auth?".http_build_query([
             'client_id' => $client_id,
             'redirect_uri' => $redirect_url,
